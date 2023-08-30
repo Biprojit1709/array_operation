@@ -29,7 +29,7 @@ switch(elmnt){
     case 4 :
     transpose_matrix();
 
-    default:
+    default :
     printf("The value is not Valid . \n");   
 }    
     printf("Enter 1 for continue . And any other number for Quit. : \n");
@@ -44,79 +44,60 @@ return 0;
 //function definations
 //Addition of Matrix
 void add_matrix(){ 
-    int i,j,row1,col1,row2,col2;
-    int arr1[100][100], arr2[100][100], arrR[100][100];
+    int i,j,row1,col1;
     printf("Enter the Number of Rows of 1st matrix :");
     scanf("%d",&row1);
     printf("Enter the Number of coloumns of 1st matrix :");
     scanf("%d",&col1);
-    arr1[row1][col1];
+    int arr1[100][100];
     
     printf("Enter the Elements of the 1st matrix :\n");
     scan_matrix(arr1, row1, col1);
-    printf("Enter the Number of rows of the 2nd matrix :"); //1st matrix
-    scanf("%d",&row2);
+    //2nd matrix
+    
+    int arr2[100][100];
+    int arrR[100][100];
+    
+    printf("Enter the Elements of the 2nd matrix :\n");
+    scan_matrix(arr2, row1, col1);
 
-    printf("Enter the Number of coloumns of the 2nd matrix :");
-    scanf("%d",&col2);
-    
-    arr2[row2][col2];
-    arrR[row1][col1];
-    
-    printf("Enter the Elements of the 2nd matrix :\n"); //2nd matrix
-    scan_matrix(arr2, row2, col2);
-    if(row1 != row2 || col1 != col2){
-        printf("Addition not Possible. Please Enter the same rows And coloumns.\n\n\n");
-        main();
-    }else{
-        int arrR[row1][col1];
-        printf("The Resultent Matrix is :\n");
+    printf("The Resultent Matrix is :\n");
         for(i=0; i<row1; i++){
-            for(j=0; j<col2; j++){
+            for(j=0; j<col1; j++){
                 arrR[i][j] = arr1[i][j] + arr2[i][j];
             }
         }
     
     print_matrix(arrR, row1, col1);
-    }
 }
+
 //Substraction of matrix
 void sub_matrix(){
-    int i,j,row1,col1,row2,col2;
-    int arr1[100][100], arr2[100][100], arrR[100][100];
+    int i,j,row1,col1;
     printf("Enter the Number of Rows of 1st matrix :");
     scanf("%d",&row1);
     printf("Enter the Number of coloumns of 1st matrix :");
     scanf("%d",&col1);
-    arr1[row1][col1];
+    int arr1[100][100];
     
     printf("Enter the Elements of the 1st matrix :\n");
     scan_matrix(arr1, row1, col1);
     //2nd matrix
-    printf("Enter the Number of rows of the 2nd matrix :");
-    scanf("%d",&row2);
-
-    printf("Enter the Number of coloumns of the 2nd matrix :");
-    scanf("%d",&col2);
     
-    arr2[row2][col2];
-    arrR[row1][col1];
+    int arr2[100][100];
+    int arrR[100][100];
     
     printf("Enter the Elements of the 2nd matrix :\n");
-    scan_matrix(arr2,row2,col2);
-    if(row1 != row2 || col1 != col2){
-        printf("Substraction not Possible. Please Enter the same rows And coloumns.\n\n\n");
-        main();
-    }else{
-        int arrR[row1][col1];
-        printf("The Resultent Matrix is :\n");
+    scan_matrix(arr2, row1, col1);
+
+    printf("The Resultent Matrix is :\n");
         for(i=0; i<row1; i++){
             for(j=0; j<col1; j++){
                 arrR[i][j] = arr1[i][j] - arr2[i][j];
             }
         }
+    
     print_matrix(arrR, row1, col1);
-    }
 }
 //multiplication of Matrix
 void multiply_matrix(){
@@ -141,14 +122,14 @@ void multiply_matrix(){
     printf("Multiplication not possible.\n\n\n");
     main();
     }else{
-    for(i=0;i<row2;i++){       //as col1 and row2 are same.
-        for(j=0; j<row2; j++){
-            matR[i][j] = 0;
-        for(k=0; k<col1; k++){
-            matR[i][j] = matR[i][j] + (mat1[i][k]*mat2[k][j]);
-            }
+         for(i=0;i<row2;i++){       //as col1 and row2 are same.
+            for(j=0; j<row2; j++){
+                 matR[i][j] = 0;
+                for(k=0; k<col1; k++){
+                     matR[i][j] = matR[i][j] + (mat1[i][k]*mat2[k][j]);
+                }
+             }
         }
-    }
     }
     printf("The final matrix is : \n");
     print_matrix(matR, row2, col1);
@@ -172,17 +153,18 @@ void transpose_matrix(){
     printf("The transpose matrix is : \n");
     print_matrix(trans, row, col);
 }
+
 // Small Action functions
 int scan_matrix(int arr[100][100], int row, int col){
-    for(int i=0; i<row;i++){
-        for(int j=0; j<col; j++){
+    for(int i=0; i<row; i++){
+        for(int j=0; j<col; j++){ //scan numbers
             scanf("%d", &arr[i][j]);
         }
     }
 }
 int print_matrix(int arr[100][100], int row, int col){
     for(int i=0;i<row;i++){
-        for(int j=0;j<col;j++){
+        for(int j=0;j<col;j++){ //print numbers 
             printf("%d  ", arr[i][j]);
         }
         printf("\n");
