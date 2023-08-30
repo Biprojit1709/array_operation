@@ -28,6 +28,7 @@ switch(elmnt){
 
     case 4 :
     transpose_matrix();
+    break;
 
     default :
     printf("The value is not Valid . \n");   
@@ -141,17 +142,18 @@ void transpose_matrix(){
     scanf("%d", &row);
     printf("Enter the number of col : ");
     scanf("%d", &col);
-    printf("Enter the Elememts of the 1st matrix :\n");
+    printf("Enter the Elememts of the Matrix :\n");
     scan_matrix(matrix, row, col);
     printf("The Matrix is : \n");
     print_matrix(matrix, row, col);
-    for(i=0;i<row;i++){
-        for(j=0;j<col;j++){
+    int rowT = col, colT= row;
+    for(i=0;i<rowT;i++){
+        for(j=0;j<colT;j++){
           trans[i][j] = matrix[j][i];  
       }
     }
     printf("The transpose matrix is : \n");
-    print_matrix(trans, row, col);
+    print_matrix(trans, rowT, colT);
 }
 
 // Small Action functions
